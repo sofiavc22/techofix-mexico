@@ -4,6 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import type {PageData} from '../data/site-data';
 import {serviceDetails,locationDetails} from '../data/content-details';
+import {BUSINESS_ID,SITE_URL} from '../data/seo';
 interface Props{data:PageData;kind:'service'|'area';canonical:string;}
 const {data,kind,canonical}=Astro.props;
 const wa=`https://wa.me/525591069566?text=${encodeURIComponent(`Hola Techofix, quiero una cotización gratuita para ${data.title}`)}`;
@@ -12,7 +13,8 @@ const location=kind==='area'?locationDetails[data.slug]:null;
 const allAreas=['Coacalco','Tultitlán','Zumpango','Tultepec','Cuautitlán','Cuautitlán Izcalli','Tlalnepantla'];
 const extraFaqs=kind==='service'?[{q:'¿Qué información debo enviar para solicitar una cotización?',a:'Comparte la ubicación, tipo de inmueble, fotografías de la cubierta y del daño interior, además de indicar si existe una filtración activa. Con estos datos podemos orientar la primera conversación y coordinar la revisión.'},{q:'¿Qué formas de pago aceptan?',a:'Aceptamos efectivo, tarjeta y transferencia. Las condiciones, anticipos y etapas se especifican en la propuesta correspondiente.'}]:[{q:`¿Atienden hogares e industria en ${location?.name}?`,a:'Sí. Atendemos inmuebles residenciales, comerciales e industriales. El acceso, altura, reglas de seguridad y alcance se revisan antes de confirmar cada servicio.'},{q:'¿Pueden llegar el mismo día?',a:'Las emergencias se reciben las 24 horas. La posibilidad de visita el mismo día depende de ubicación, tránsito, clima, acceso seguro y disponibilidad; siempre confirmamos una ventana antes de trasladarnos.'}];
 const faqs=[...data.faqs,...extraFaqs];
-const schema={"@context":"https://schema.org","@graph":[{"@type":"Service",name:data.title,description:data.description,provider:{"@type":"RoofingContractor",name:"Techofix",telephone:"+52 55 9106 9566",areaServed:allAreas}},{"@type":"FAQPage",mainEntity:faqs.map(f=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))},{"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Inicio",item:"https://techofixmexico.site/"},{"@type":"ListItem",position:2,name:kind==='service'?"Servicios":"Zonas",item:`https://techofixmexico.site/${kind==='service'?'servicios':'zonas'}/`},{"@type":"ListItem",position:3,name:data.title}]}]};
+const pageUrl=new URL(canonical,SITE_URL).toString();
+const schema={"@context":"https://schema.org","@graph":[{"@type":"Service","@id":`${pageUrl}#service`,url:pageUrl,name:data.title,serviceType:data.title,description:data.description,provider:{"@id":BUSINESS_ID},areaServed:allAreas.map(name=>({"@type":"City",name})),availableChannel:{"@type":"ServiceChannel",servicePhone:{"@type":"ContactPoint",telephone:"+52 55 9106 9566",contactType:"customer service"}}},{"@type":"FAQPage","@id":`${pageUrl}#faq`,mainEntity:faqs.map(f=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))},{"@type":"BreadcrumbList","@id":`${pageUrl}#breadcrumbs`,itemListElement:[{"@type":"ListItem",position:1,name:"Inicio",item:`${SITE_URL}/`},{"@type":"ListItem",position:2,name:kind==='service'?"Servicios":"Zonas",item:`${SITE_URL}/${kind==='service'?'servicios':'zonas'}/`},{"@type":"ListItem",position:3,name:data.title,item:pageUrl}]}]};
 ---
 <BaseLayout title={`${data.title} | Techofix`} description={data.description} canonical={canonical} schema={schema}>
   <main class="detailPage">

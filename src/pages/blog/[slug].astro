@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';import Header from '../../components/Header.astro';import {articles} from '../../data/blog-data';
+import {BUSINESS_ID,SITE_URL} from '../../data/seo';
 export function getStaticPaths(){return Object.entries(articles).map(([slug,article])=>({params:{slug},props:{article}}));}
 const {article:a}=Astro.props;
-const schema={"@context":"https://schema.org","@type":"BlogPosting",headline:a.title,description:a.excerpt,datePublished:"2026-08-19",dateModified:"2026-08-19",author:{"@type":"Organization",name:"Techofix"},publisher:{"@type":"Organization",name:"Techofix"},mainEntityOfPage:`https://techofixmexico.site/blog/${a.slug}/`};
+const articleUrl=`${SITE_URL}/blog/${a.slug}/`;
+const schema={"@context":"https://schema.org","@type":"BlogPosting","@id":`${articleUrl}#article`,headline:a.title,description:a.excerpt,datePublished:"2026-08-19",dateModified:"2026-08-20",inLanguage:"es-MX",author:{"@id":BUSINESS_ID},publisher:{"@id":BUSINESS_ID},image:`${SITE_URL}/og.webp`,mainEntityOfPage:articleUrl};
 ---
 <BaseLayout title={`${a.title} | Techofix`} description={a.excerpt} canonical={`/blog/${a.slug}/`} schema={schema}>
 <main class="articlePage"><Header/><article><header class="articleHero"><a href="/blog/">← Todas las guías</a><p>{a.category} · {a.readTime}</p><h1>{a.title}</h1><span>{a.excerpt}</span></header><div class="articleContent"><p class="articleLead">{a.intro}</p>{a.sections.map(s=><section><h2>{s.heading}</h2>{s.paragraphs.map(p=><p>{p}</p>)}{s.bullets&&<ul>{s.bullets.map(x=><li>{x}</li>)}</ul>}</section>)}<section class="articleFaq"><h2>Preguntas frecuentes</h2>{a.faqs.map(f=><div><h3>{f.q}</h3><p>{f.a}</p></div>)}</section><aside><h2>¿Necesitas revisar tu techo?</h2><p>Techofix ofrece cotización gratuita en Coacalco, Tultitlán, Cuautitlán y Cuautitlán Izcalli.</p><a class="button" href="https://wa.me/525591069566">Escribir por WhatsApp ↗</a></aside></div></article></main>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { areas } from '../../data/site-data';
+const areaList=Object.values(areas);
+const wa='https://wa.me/525591069566?text=Hola%20Techofix%2C%20quiero%20confirmar%20servicio%20en%20mi%20zona';
+---
+<BaseLayout title="Zonas de servicio de Techofix | Estado de México" description="Reparación e impermeabilización de techos en Coacalco, Tultitlán, Zumpango, Tultepec, Cuautitlán, Cuautitlán Izcalli y Tlalnepantla.">
+  <Header />
+  <main>
+    <section class="pageHero pageHeroLight"><p class="eyebrow"><span></span>Cobertura en el Estado de México</p><h1>Servicio local, respuesta directa.</h1><p>Atendemos techos residenciales, comerciales e industriales en siete municipios del norte y área metropolitana del Estado de México.</p><a class="button" href={wa}>Confirmar cobertura ↗</a></section>
+    <section class="section areas"><div class="sectionHead darkText"><div><p class="sectionTag">Zonas Techofix</p><h2>Encuentra servicio cerca de ti.</h2></div><p>Cada zona cuenta con información específica de servicios, emergencias y proceso de cotización.</p></div><div class="areaList">{areaList.map((area,index)=><a href={`/zonas/${area.slug}/`}><span>{String(index+1).padStart(2,'0')}</span><strong>{area.title.replace('Reparación e impermeabilización de techos en ','')}</strong><b>↗</b></a>)}</div></section>
+  </main>
+  <Footer />
+</BaseLayout>

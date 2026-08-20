@@ -4,6 +4,22 @@ export type PageData = {
 };
 
 export const services: Record<string, PageData> = {
+  "techos-residenciales": {
+    slug:"techos-residenciales", title:"Reparación e impermeabilización de techos residenciales", eyebrow:"Protección profesional para tu hogar",
+    description:"Reparación, mantenimiento e impermeabilización de azoteas, losas, lámina y teja para casas y condominios en el Estado de México.",
+    intro:"Un techo residencial puede mostrar goteras, manchas, moho, pintura inflada, grietas o impermeabilizante desprendido. Revisamos la cubierta y el daño interior para distinguir entre una reparación localizada, mantenimiento preventivo o impermeabilización completa.",
+    problems:["Goteras y humedad dentro de la vivienda","Grietas y fisuras en losas de concreto","Impermeabilizante desprendido o envejecido","Filtraciones en lámina, teja y ampliaciones"],
+    process:[{title:"Revisión del hogar",text:"Recibimos fotografías y evaluamos cubierta, puntos críticos y daño interior."},{title:"Propuesta residencial",text:"Explicamos reparación, material, preparación, tiempos y garantía aplicable."},{title:"Ejecución ordenada",text:"Protegemos las áreas acordadas y realizamos el trabajo procurando reducir molestias."}],
+    faqs:[{q:"¿Trabajan casas habitadas?",a:"Sí. Acordamos accesos, horarios y zonas de trabajo para reducir molestias y mantener áreas seguras."},{q:"¿Pueden reparar antes de impermeabilizar?",a:"Sí. Las grietas, juntas, pendientes y piezas dañadas deben atenderse antes de aplicar un sistema nuevo."},{q:"¿Atienden condominios?",a:"Sí, coordinamos la revisión con propietarios, administración o responsable de mantenimiento."}]
+  },
+  "techos-industriales": {
+    slug:"techos-industriales", title:"Reparación e impermeabilización de techos industriales", eyebrow:"Continuidad para bodegas y naves",
+    description:"Reparación urgente, impermeabilización y mantenimiento preventivo de techos industriales, bodegas y naves en el Estado de México.",
+    intro:"Una filtración industrial puede afectar inventario, equipos, tableros, oficinas o continuidad operativa. Revisamos láminas, fijaciones, traslapes, canalones, domos, extractores, remates y bajadas para priorizar el riesgo y planear la intervención.",
+    problems:["Filtraciones sobre inventario o maquinaria","Canalones desbordados y bajadas obstruidas","Lámina corroída, perforada o con movimiento","Sellos vencidos en domos, equipos y remates"],
+    process:[{title:"Levantamiento técnico",text:"Documentamos áreas críticas, accesos, altura y restricciones de operación."},{title:"Plan por prioridades",text:"Separamos contención urgente, reparación correctiva y mantenimiento programado."},{title:"Trabajo coordinado",text:"Ejecutamos por áreas y horarios acordados con el responsable del inmueble."}],
+    faqs:[{q:"¿Atienden reparación de techo industrial urgente?",a:"Sí, recibimos reportes 24/7 y priorizamos riesgos sobre personas, equipos, inventario y operación."},{q:"¿Trabajan sin detener la nave?",a:"La viabilidad depende del proceso, acceso y seguridad; después de revisar proponemos una secuencia por zonas."},{q:"¿Realizan mantenimiento preventivo?",a:"Sí, revisamos cubiertas y proponemos correcciones priorizadas antes de la temporada de lluvias."}]
+  },
   "reparacion-de-goteras-y-filtraciones": {
     slug:"reparacion-de-goteras-y-filtraciones", title:"Reparación de goteras y filtraciones", eyebrow:"Detenemos el agua desde su origen",
     description:"Reparamos goteras y filtraciones en techos de concreto, lámina, teja y cubiertas industriales en el Estado de México.",
@@ -55,8 +71,8 @@ export const services: Record<string, PageData> = {
 };
 
 const local = (slug:string,title:string): PageData => ({
-  slug, title:`Reparación de techos en ${title}`, eyebrow:`Servicio local en ${title}`,
-  description:`Reparación, instalación e impermeabilización de techos residenciales e industriales en ${title}, Estado de México. Cotización gratuita y emergencias 24 horas.`,
+  slug, title:`Reparación e impermeabilización de techos en ${title}`, eyebrow:`Servicio local en ${title}`,
+  description:`Reparación de techos, goteras e impermeabilización residencial e industrial en ${title}, Estado de México. Cotización gratuita y emergencias 24 horas.`,
   intro:`Techofix atiende hogares, comercios y naves industriales en ${title}. Revisamos goteras, filtraciones, losas, láminas, canalones y cubiertas completas para recomendar una solución acorde con el daño real.`,
   problems:["Reparación de goteras y filtraciones","Impermeabilización de azoteas y cubiertas","Reparación y cambio de techos de lámina","Instalación y mantenimiento industrial"],
   process:[{title:"Contacto directo",text:"Llámanos o envía fotografías del problema por WhatsApp."},{title:"Cotización gratuita",text:`Coordinamos una revisión dentro de ${title} y explicamos el trabajo necesario.`},{title:"Trabajo garantizado",text:"Realizamos la reparación acordada y entregamos la garantía aplicable por escrito."}],
@@ -65,5 +81,7 @@ const local = (slug:string,title:string): PageData => ({
 
 export const areas: Record<string,PageData> = {
   coacalco: local("coacalco","Coacalco"), tultitlan: local("tultitlan","Tultitlán"),
-  cuautitlan: local("cuautitlan","Cuautitlán"), "cuautitlan-izcalli": local("cuautitlan-izcalli","Cuautitlán Izcalli")
+  zumpango: local("zumpango","Zumpango"), tultepec: local("tultepec","Tultepec"),
+  cuautitlan: local("cuautitlan","Cuautitlán"), "cuautitlan-izcalli": local("cuautitlan-izcalli","Cuautitlán Izcalli"),
+  tlalnepantla: local("tlalnepantla","Tlalnepantla")
 };

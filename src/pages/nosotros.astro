@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const wa='https://wa.me/525591069566?text=Hola%20Techofix%2C%20quiero%20una%20cotizaci%C3%B3n%20gratuita';
+---
+<BaseLayout title="Nosotros | Techofix" description="Conoce a Techofix: 16 años reparando e impermeabilizando techos residenciales e industriales en el Estado de México.">
+  <Header />
+  <main>
+    <section class="pageHero"><p class="eyebrow"><span></span>16 años de experiencia</p><h1>El techo se repara desde el origen.</h1><p>Somos especialistas en diagnóstico, reparación, impermeabilización, mantenimiento e instalación de cubiertas para hogares y empresas.</p></section>
+    <section class="section storySection"><div><p class="sectionTag">Nuestra forma de trabajar</p><h2>Claridad antes de comenzar.</h2></div><div><p>Techofix nació del trabajo directo en techos residenciales e industriales. Sabemos que una filtración visible puede tener su origen lejos de la mancha, por eso revisamos pendientes, uniones, grietas, remates, tornillería, canalones y sistemas existentes antes de cotizar.</p><p>No proponemos cubrir temporalmente el daño. Explicamos qué encontramos, qué se necesita reparar y qué garantía aplica al sistema recomendado.</p></div></section>
+    <section class="valuesSection section"><article><strong>16</strong><span>Años de experiencia</span></article><article><strong>24/7</strong><span>Atención a emergencias</span></article><article><strong>100%</strong><span>Cotización gratuita</span></article><article><strong>3</strong><span>Formas de pago</span></article></section>
+    <section class="section processBand"><div><p class="sectionTag light">Nuestro compromiso</p><h2>Revisar. Explicar. Resolver.</h2></div><ol><li><span>01</span><b>Diagnóstico responsable</b><p>Identificamos el origen probable antes de elegir materiales.</p></li><li><span>02</span><b>Propuesta clara</b><p>Definimos alcance, costo y condiciones antes de comenzar.</p></li><li><span>03</span><b>Trabajo respaldado</b><p>Ejecutamos lo acordado y entregamos la garantía aplicable.</p></li></ol></section>
+    <section class="cta"><p class="sectionTag light">Hablemos de tu techo</p><h2>Cuéntanos qué está pasando.</h2><div><a class="button buttonWhite" href={wa}>Escribir por WhatsApp ↗</a></div></section>
+  </main>
+  <Footer />
+</BaseLayout>

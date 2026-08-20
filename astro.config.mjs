@@ -9,7 +9,7 @@ export default defineConfig({
       const path = new URL(item.url).pathname;
       if (path === '/') return { ...item, changefreq: 'weekly', priority: 1.0 };
       if (path === '/servicios/' || path === '/zonas/') return { ...item, changefreq: 'monthly', priority: 0.9 };
-      if (path.startsWith('/servicios/') || path.startsWith('/zonas/') || path === '/reparacion-de-techos/' || path === '/emergencias/') {
+      if (path.startsWith('/servicios/') || path.startsWith('/zonas/') || path === '/emergencias/') {
         return { ...item, changefreq: 'monthly', priority: 0.8 };
       }
       if (path.startsWith('/blog/')) return { ...item, changefreq: 'monthly', priority: path === '/blog/' ? 0.7 : 0.6 };

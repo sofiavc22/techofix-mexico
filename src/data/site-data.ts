@@ -4,6 +4,14 @@ export type PageData = {
 };
 
 export const services: Record<string, PageData> = {
+  "reparacion-de-techos": {
+    slug:"reparacion-de-techos", title:"Reparación de techos en Estado de México", eyebrow:"Soluciones integrales para cualquier cubierta",
+    description:"Diagnóstico y reparación integral de techos residenciales, comerciales e industriales en siete municipios del Estado de México.",
+    intro:"La reparación integral de un techo comienza al determinar si el daño está limitado a una unión o si afecta varias partes de la cubierta. Techofix revisa el sistema completo: superficie, estructura visible, pendientes, desagües, remates, penetraciones y deterioro acumulado. Así podemos recomendar desde una corrección puntual hasta mantenimiento, sustitución parcial o cambio completo.",
+    problems:["Deterioro general y vida útil agotada","Daños combinados en cubierta y sistema pluvial","Secciones deformadas, sueltas o con corrosión","Necesidad de reparación parcial o renovación completa"],
+    process:[{title:"Evaluación integral",text:"Revisamos material, extensión del deterioro, accesos, seguridad y funcionamiento del desalojo pluvial."},{title:"Alcance por prioridades",text:"Separamos reparaciones urgentes, trabajos recuperables y secciones que necesitan sustitución."},{title:"Reparación coordinada",text:"Ejecutamos el alcance autorizado procurando conservar las partes del techo que todavía funcionan correctamente."}],
+    faqs:[{q:"¿Cuándo conviene reparar y cuándo cambiar el techo?",a:"Depende de la extensión del daño, la edad de la cubierta, las reparaciones anteriores y el costo acumulado de seguir corrigiendo fallas aisladas."},{q:"¿Reparan todo tipo de techos?",a:"Atendemos losas, lámina, teja y diferentes cubiertas residenciales e industriales; la viabilidad se confirma después de revisar material, estructura y acceso."},{q:"¿Pueden dividir el trabajo por etapas?",a:"Sí. Cuando el inmueble y la seguridad lo permiten, priorizamos las áreas críticas y organizamos el resto del proyecto por secciones."}]
+  },
   "techos-residenciales": {
     slug:"techos-residenciales", title:"Reparación e impermeabilización de techos residenciales", eyebrow:"Protección profesional para tu hogar",
     description:"Reparación, mantenimiento e impermeabilización de azoteas, losas, lámina y teja para casas y condominios en el Estado de México.",
@@ -70,9 +78,9 @@ export const services: Record<string, PageData> = {
   }
 };
 
-const local = (slug:string,title:string): PageData => ({
+const local = (slug:string,title:string,localDetail:string): PageData => ({
   slug, title:`Reparación e impermeabilización de techos en ${title}`, eyebrow:`Servicio local en ${title}`,
-  description:`Reparación de techos, goteras e impermeabilización residencial e industrial en ${title}, Estado de México. Cotización gratuita y emergencias 24 horas.`,
+  description:`Reparación de techos e impermeabilización en ${title}. ${localDetail} Cotización gratuita y atención de emergencias 24 horas.`,
   intro:`Techofix atiende hogares, comercios y naves industriales en ${title}. Revisamos goteras, filtraciones, losas, láminas, canalones y cubiertas completas para recomendar una solución acorde con el daño real.`,
   problems:["Reparación de goteras y filtraciones","Impermeabilización de azoteas y cubiertas","Reparación y cambio de techos de lámina","Instalación y mantenimiento industrial"],
   process:[{title:"Contacto directo",text:"Llámanos o envía fotografías del problema por WhatsApp."},{title:"Cotización gratuita",text:`Coordinamos una revisión dentro de ${title} y explicamos el trabajo necesario.`},{title:"Trabajo garantizado",text:"Realizamos la reparación acordada y entregamos la garantía aplicable por escrito."}],
@@ -80,8 +88,11 @@ const local = (slug:string,title:string): PageData => ({
 });
 
 export const areas: Record<string,PageData> = {
-  coacalco: local("coacalco","Coacalco"), tultitlan: local("tultitlan","Tultitlán"),
-  zumpango: local("zumpango","Zumpango"), tultepec: local("tultepec","Tultepec"),
-  cuautitlan: local("cuautitlan","Cuautitlán"), "cuautitlan-izcalli": local("cuautitlan-izcalli","Cuautitlán Izcalli"),
-  tlalnepantla: local("tlalnepantla","Tlalnepantla")
+  coacalco: local("coacalco","Coacalco","Servicio para casas, condominios, comercios y pequeñas industrias."),
+  tultitlan: local("tultitlan","Tultitlán","Cobertura residencial, logística e industrial en distintos sectores del municipio."),
+  zumpango: local("zumpango","Zumpango","Atendemos fraccionamientos, comunidades, talleres y bodegas."),
+  tultepec: local("tultepec","Tultepec","Servicio para viviendas, locales, talleres autorizados y cubiertas mixtas."),
+  cuautitlan: local("cuautitlan","Cuautitlán","Soluciones para viviendas, comercios, parques industriales y centros de distribución."),
+  "cuautitlan-izcalli": local("cuautitlan-izcalli","Cuautitlán Izcalli","Atención en fraccionamientos, plazas, oficinas y corredores industriales."),
+  tlalnepantla: local("tlalnepantla","Tlalnepantla","Servicio urbano e industrial para fábricas, bodegas, comercios y viviendas.")
 };

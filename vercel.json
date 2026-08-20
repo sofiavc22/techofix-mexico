@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/reparacion-de-techos",
+      "destination": "/servicios/reparacion-de-techos/",
+      "permanent": true
+    },
+    {
+      "source": "/reparacion-de-techos/",
+      "destination": "/servicios/reparacion-de-techos/",
+      "permanent": true
+    }
+  ]
+}

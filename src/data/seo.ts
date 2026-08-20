@@ -3,18 +3,10 @@ import { services } from './site-data';
 export const SITE_URL = 'https://www.techofixmexico.site';
 export const BUSINESS_ID = `${SITE_URL}/#negocio`;
 
-const catalogServices = [
-  {
-    slug: 'reparacion-de-techos',
-    title: 'Reparación de techos',
-    description: 'Diagnóstico y reparación de goteras, filtraciones, grietas, juntas, láminas y daños en cubiertas residenciales e industriales.',
-    url: `${SITE_URL}/reparacion-de-techos/`,
-  },
-  ...Object.values(services).map((service) => ({
+const catalogServices = Object.values(services).map((service) => ({
     ...service,
     url: `${SITE_URL}/servicios/${service.slug}/`,
-  })),
-];
+  }));
 
 export const serviceCatalog = {
   '@type': 'OfferCatalog',

@@ -2,7 +2,20 @@ export const serviceDetails: Record<string, {
   included: {title:string;text:string}[];
   diagnosis:string[];
   emergency:string[];
+  problemDescriptions?:string[];
 }> = {
+  'reparacion-de-techos': {
+    included:[
+      {title:'Diagnóstico integral',text:'Evaluamos el material, la edad aparente, reparaciones previas, deformaciones, humedad y funcionamiento general de la cubierta.'},
+      {title:'Reparación de elementos',text:'Atendemos secciones deterioradas, remates, fijaciones, juntas y detalles compatibles con el alcance aprobado.'},
+      {title:'Corrección del sistema pluvial',text:'Revisamos pendientes, canalones, bajadas y puntos donde el agua se acumula o regresa hacia el inmueble.'},
+      {title:'Sustitución parcial',text:'Cambiamos piezas o áreas dañadas cuando el resto del techo conserva condiciones útiles y seguras.'},
+      {title:'Renovación completa',text:'Planeamos desmontaje e instalación cuando el deterioro extendido vuelve poco conveniente seguir reparando por partes.'},
+      {title:'Plan de mantenimiento',text:'Entregamos recomendaciones para conservar la reparación y vigilar los puntos que requieren revisiones futuras.'}
+    ],
+    diagnosis:['Esta página cubre reparaciones integrales donde intervienen varias partes del techo o existe duda entre conservar, rehabilitar o sustituir. Si el único síntoma es una entrada localizada de agua, la página específica de goteras explica ese diagnóstico puntual con mayor detalle.','La revisión general relaciona la cubierta con su uso: una casa habitada, un comercio y una nave industrial requieren accesos, seguridad, materiales y secuencias diferentes. El objetivo es definir un alcance completo sin reemplazar elementos que todavía pueden conservarse.'],
+    emergency:['Recibimos reportes de daños en techos las 24 horas, especialmente después de lluvia o viento. Solicitamos ubicación, fotografías, tipo de inmueble y descripción de cualquier pieza suelta, deformación o ingreso activo de agua.','Si existe riesgo de desprendimiento, colapso o contacto con electricidad, debe aislarse el área. La intervención en altura se confirma únicamente cuando el clima, la cubierta y los medios de protección permiten trabajar de forma segura.']
+  },
   'techos-residenciales': {
     included:[
       {title:'Diagnóstico de goteras',text:'Relacionamos manchas interiores con grietas, uniones, instalaciones, pendientes y recorridos posibles del agua.'},
@@ -40,6 +53,12 @@ export const serviceDetails: Record<string, {
     emergency:['Cuando existe ingreso activo de agua recibimos solicitudes las 24 horas. La prioridad inicial es conocer el tipo de inmueble, la ubicación, el acceso y si existe un riesgo eléctrico, estructural o para la operación.','La lluvia, el viento y la seguridad para trabajar en altura pueden limitar una reparación definitiva inmediata. En esos casos explicamos qué medida provisional es viable y programamos la corrección permanente cuando las condiciones permitan trabajar de forma segura.']
   },
   'impermeabilizacion-de-techos': {
+    problemDescriptions:[
+      'Renovamos sistemas acrílicos con preparación, refuerzos y aplicación compatible con el estado de la losa.',
+      'Valoramos si la superficie y los detalles constructivos permiten instalar membrana prefabricada correctamente.',
+      'Tratamos fisuras, juntas, chaflanes y penetraciones antes de aplicar el sistema impermeable principal.',
+      'Revisamos cubiertas industriales, sellos y drenaje para programar correcciones antes de la temporada de lluvias.'
+    ],
     included:[
       {title:'Evaluación del sistema existente',text:'Identificamos material, adherencia, desgaste, humedad atrapada y reparaciones anteriores.'},
       {title:'Preparación de superficie',text:'Contemplamos limpieza y retiro de material suelto para que el nuevo sistema trabaje sobre una base adecuada.'},

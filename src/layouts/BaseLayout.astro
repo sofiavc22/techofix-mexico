@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+interface Props { title:string; description:string; canonical?:string; schema?:Record<string,unknown>; }
+const {title,description,canonical=Astro.url.pathname,schema}=Astro.props;
+const absoluteCanonical=new URL(canonical,'https://techofixmexico.site').toString();
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={absoluteCanonical} />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preload" href="/techofix-hero.webp" as="image" type="image/webp" fetchpriority="high" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={absoluteCanonical} />
+    <meta property="og:image" content="https://techofixmexico.site/og.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://techofixmexico.site/og.webp" />
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body><slot /></body>
+</html>

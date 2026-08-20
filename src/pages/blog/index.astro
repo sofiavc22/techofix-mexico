@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';import Header from '../../components/Header.astro';import {articles} from '../../data/blog-data';
+---
+<BaseLayout title="Guías sobre reparación y mantenimiento de techos | Techofix" description="Consejos para identificar goteras, cuidar cubiertas industriales y elegir entre reparar o impermeabilizar un techo." canonical="/blog/">
+<main class="blogPage"><Header/><section class="blogHero"><p class="eyebrow"><span></span>Guías Techofix</p><h1>Entiende tu techo<br/>antes de repararlo.</h1><p>Información clara para propietarios, administradores y responsables de mantenimiento.</p></section><section class="blogGrid section">{Object.values(articles).map((a,i)=><article class={i===0?'mainArticle':''}><div class="articleVisual"><span>0{i+1}</span><b>{a.category}</b></div><div class="articleCardBody"><p>{a.date} · {a.readTime}</p><h2>{a.title}</h2><span>{a.excerpt}</span><a href={`/blog/${a.slug}/`}>Leer la guía ↗</a></div></article>)}</section></main>
+</BaseLayout>

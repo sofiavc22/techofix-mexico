@@ -1,0 +1,6 @@
+---
+import DetailPage from '../components/DetailPage.astro';
+import {services} from '../data/site-data';
+const pillar={...services['reparacion-de-goteras-y-filtraciones'],title:'Reparación de techos en Estado de México',eyebrow:'Residencial, comercial e industrial',description:'Reparamos goteras, filtraciones, losas, láminas y cubiertas completas en Coacalco, Tultitlán, Cuautitlán y Cuautitlán Izcalli.',intro:'Techofix cuenta con 16 años de experiencia en reparación, instalación y mantenimiento de techos. Atendemos desde una gotera en casa hasta una cubierta industrial que necesita sustitución, empezando siempre por una inspección del daño real.',problems:['Goteras, humedad y filtraciones','Grietas y daños en losas de concreto','Láminas, traslapes, remates y canalones','Instalación y cambio completo de cubiertas']};
+---
+<DetailPage data={pillar} kind="service" canonical="/reparacion-de-techos/"/>

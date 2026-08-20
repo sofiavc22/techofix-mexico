@@ -1,0 +1,7 @@
+---
+import DetailPage from '../../components/DetailPage.astro';
+import {services} from '../../data/site-data';
+export function getStaticPaths(){return Object.entries(services).map(([slug,data])=>({params:{slug},props:{data}}));}
+const {data}=Astro.props;
+---
+<DetailPage data={data} kind="service" canonical={`/servicios/${data.slug}/`}/>

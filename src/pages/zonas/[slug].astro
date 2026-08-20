@@ -1,0 +1,7 @@
+---
+import DetailPage from '../../components/DetailPage.astro';
+import {areas} from '../../data/site-data';
+export function getStaticPaths(){return Object.entries(areas).map(([slug,data])=>({params:{slug},props:{data}}));}
+const {data}=Astro.props;
+---
+<DetailPage data={data} kind="area" canonical={`/zonas/${data.slug}/`}/>

@@ -180,6 +180,9 @@ footer a:hover { color:var(--orange) !important; }
 .articleFaq>div { padding:22px 0; border-top:1px solid #d4d7d6; }
 .articleFaq h3 { margin:0 0 8px; font-size:16px; }
 .articleFaq p { margin:0; }
+.articleRelated,.articleSources { padding:34px; background:#fff; border:1px solid #d4d7d6; }
+.articleRelated ul,.articleSources ul { margin:0; display:grid; gap:10px; }
+.articleRelated a,.articleSources a { color:var(--orange); font-weight:800; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
 .articleContent aside { padding:45px; background:var(--orange); color:#fff; }
 .articleContent aside h2 { color:#fff; }
 .articleContent aside p { max-width:620px; color:#fff; }

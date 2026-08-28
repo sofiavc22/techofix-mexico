@@ -1,5 +1,71 @@
-export type Article={slug:string;title:string;excerpt:string;category:string;readTime:string;date:string;dateISO?:string;modifiedISO?:string;intro:string;sections:{heading:string;paragraphs:string[];bullets?:string[]}[];faqs:{q:string;a:string}[];sources?:{label:string;url:string}[];related?:{label:string;url:string}[]};
+import goterasUrgentes from './articles/goteras-en-el-techo-que-hacer-urgente.md?raw';
+import impermeabilizanteDespegado from './articles/impermeabilizante-despegado-solucion.md?raw';
+
+export type Article={slug:string;title:string;metaTitle?:string;excerpt:string;category:string;readTime:string;date:string;dateISO?:string;modifiedISO?:string;intro:string;sections:{heading:string;paragraphs:string[];bullets?:string[]}[];faqs:{q:string;a:string}[];sources?:{label:string;url:string}[];related?:{label:string;url:string}[];ctaTitle?:string;ctaText?:string;ctaMessage?:string};
+
+function parseArticle(markdown:string){
+  const parts=markdown.trim().split(/^## /m);
+  const intro=parts.shift()?.trim()??'';
+  const sections=parts.map(part=>{
+    const [heading,...bodyLines]=part.trim().split('\n');
+    const body=bodyLines.join('\n').trim();
+    const paragraphs=body.split(/\n\s*\n/).map(x=>x.trim()).filter(x=>x&&!x.startsWith('- '));
+    const bullets=body.split('\n').filter(x=>x.startsWith('- ')).map(x=>x.slice(2).trim());
+    return {heading:heading.trim(),paragraphs,...(bullets.length?{bullets}: {})};
+  });
+  return {intro,sections};
+}
+
+const urgentContent=parseArticle(goterasUrgentes);
+const detachedContent=parseArticle(impermeabilizanteDespegado);
 export const articles:Record<string,Article>={
+  "goteras-en-el-techo-que-hacer-urgente":{
+    slug:"goteras-en-el-techo-que-hacer-urgente",title:"Goteras en el techo: qué hacer urgente mientras llueve",metaTitle:"Goteras en el techo: qué hacer urgente | Techofix",excerpt:"¿Está entrando agua durante una tormenta? Aprende qué hacer de inmediato, qué evitar y cuándo solicitar una reparación urgente del techo.",category:"Emergencias de techos",readTime:"11 min",date:"28 agosto 2026",dateISO:"2026-08-28",modifiedISO:"2026-08-28",...urgentContent,
+    faqs:[
+      {q:"¿Qué hago inmediatamente si empieza a gotear el techo?",a:"Aleja personas y objetos, coloca un recipiente desde una zona segura, documenta la filtración y evita tocar agua cercana a electricidad. No subas a una cubierta mojada durante la tormenta."},
+      {q:"¿Debo perforar un plafón abombado para sacar el agua?",a:"No. Puede caer agua, yeso u otros materiales de forma repentina y también puede existir riesgo eléctrico. Aísla el área y solicita atención profesional."},
+      {q:"¿Se puede reparar una gotera mientras está lloviendo?",a:"Algunas acciones interiores pueden reducir daños, pero trabajar sobre una cubierta mojada, con viento o poca visibilidad puede ser inseguro. La reparación exterior debe realizarse en una ventana segura."},
+      {q:"¿Puedo aplicar impermeabilizante sobre el techo mojado?",a:"No debe asumirse. Cada sistema exige condiciones específicas de superficie y clima. Aplicarlo apresuradamente puede impedir la adherencia o encerrar humedad."},
+      {q:"¿Una gotera pequeña puede esperar?",a:"El tamaño visible no muestra todo el recorrido del agua. Debe revisarse pronto si reaparece, aumenta, ablanda materiales o está cerca de instalaciones eléctricas."},
+      {q:"¿Cómo encuentro el origen de la gotera?",a:"Relaciona la mancha con la lluvia y los elementos ubicados arriba, pero considera que el agua puede recorrer la losa o la cubierta. Una inspección física puede ser necesaria."},
+      {q:"¿Qué fotografías debo enviar para una valoración?",a:"Envía una toma general del espacio, acercamientos de la humedad o goteo y fotografías exteriores únicamente desde lugares seguros, además de municipio y tipo de techo."},
+      {q:"¿Techofix atiende emergencias de noche o en fin de semana?",a:"Techofix recibe reportes de emergencias de techos las 24 horas. La intervención exterior se determina según ubicación, alcance y condiciones de seguridad."}
+    ],
+    sources:[
+      {label:"CENAPRED: recomendaciones antes, durante y después de las lluvias",url:"https://www.gob.mx/cenapred/articulos/en-epoca-de-lluvias-preparate-antes-durante-y-despues-tu-preparacion-hace-la-diferencia"},
+      {label:"CDC: seguridad eléctrica después de una inundación",url:"https://www.cdc.gov/natural-disasters/safety/index.html"}
+    ],
+    related:[
+      {label:"Emergencias de techos 24 horas",url:"/emergencias/"},
+      {label:"Reparación de goteras y filtraciones",url:"/servicios/reparacion-de-goteras-y-filtraciones/"},
+      {label:"Reparación integral de techos",url:"/servicios/reparacion-de-techos/"},
+      {label:"Impermeabilización de techos",url:"/servicios/impermeabilizacion-de-techos/"}
+    ],ctaTitle:"¿Necesitas atención por una gotera?",ctaText:"Envíanos fotos seguras del problema, tu municipio y dinos si el agua sigue entrando. Te damos una valoración visual inicial gratuita y te orientamos sobre el siguiente paso.",ctaMessage:"Hola Techofix, tengo una gotera y quiero una valoración gratuita"
+  },
+  "impermeabilizante-despegado-solucion":{
+    slug:"impermeabilizante-despegado-solucion",title:"Impermeabilizante despegado o con burbujas: causas y solución",metaTitle:"Impermeabilizante despegado o con burbujas: solución | Techofix",excerpt:"Descubre por qué el impermeabilizante se despega, infla o forma burbujas, qué no debes hacer y cómo decidir si puede repararse o debe retirarse.",category:"Mantenimiento de techos",readTime:"12 min",date:"28 agosto 2026",dateISO:"2026-08-28",modifiedISO:"2026-08-28",...detachedContent,
+    faqs:[
+      {q:"¿Por qué se infla el impermeabilizante con el sol?",a:"El calentamiento puede expandir aire o vapor atrapado debajo. La causa de fondo suele relacionarse con humedad, poca adherencia o una capa que no se preparó correctamente."},
+      {q:"¿Debo reventar las burbujas del impermeabilizante?",a:"No sin evaluar y reparar la zona. Reventarlas crea una abertura. Primero debe identificarse qué hay debajo y cómo se reconstruirá el sistema."},
+      {q:"¿Se puede pegar nuevamente el impermeabilizante levantado?",a:"En algunos daños pequeños puede realizarse una reparación compatible, pero el material y la base deben estar firmes y secos. Un sistema ampliamente desprendido no se corrige pegando bordes."},
+      {q:"¿Puedo impermeabilizar encima de una capa vieja?",a:"Solo si está bien adherida, limpia y es compatible con el nuevo sistema. Las zonas sueltas deben retirarse y la preparación debe seguir las instrucciones del fabricante."},
+      {q:"¿Las burbujas significan que hay una gotera?",a:"No siempre, pero revelan una separación y una zona vulnerable. Puede haber humedad atrapada aunque todavía no se observe agua en el interior."},
+      {q:"¿La garantía cubre un impermeabilizante despegado?",a:"Depende de quién emitió la garantía, su alcance, el producto, la aplicación y el mantenimiento. Documenta el daño y revisa las condiciones antes de intervenir."},
+      {q:"¿Cuándo es necesario retirar todo el impermeabilizante?",a:"Cuando el desprendimiento es general, existen capas incompatibles, humedad distribuida o la base necesita reparaciones extensas. La decisión debe confirmarse mediante inspección."},
+      {q:"¿Pueden revisar las burbujas mediante fotografías?",a:"Las fotos permiten una evaluación inicial de extensión y urgencia. Para determinar adherencia, humedad y condición de las capas inferiores normalmente se necesita inspección física."}
+    ],
+    sources:[
+      {label:"Fester Acriton: preparación, sellado y mantenimiento",url:"https://www.fester.com.mx/productos/central-pdp.html/fester-acriton-proshield-max-4-aos/SAP_0201WPA070E5.html"},
+      {label:"Sika México: membranas líquidas acrílicas para techos",url:"https://mex.sika.com/es/construccion/impermeailizantes-sika/impermeabilizacionparaespaciosexteriores/azoteas-techos/cubiertas-de-concreto/membranas-liquidas/sika-acril-techo-5ultra.html"},
+      {label:"GAF: señales de humedad y ampollamiento",url:"https://www.gaf.com/en-us/plan-design/homeowner-education/roof-damage"}
+    ],
+    related:[
+      {label:"Reparación integral de techos",url:"/servicios/reparacion-de-techos/"},
+      {label:"Impermeabilización de techos",url:"/servicios/impermeabilizacion-de-techos/"},
+      {label:"Reparación de losas de concreto",url:"/servicios/reparacion-de-losas-de-concreto/"},
+      {label:"Reparación de goteras y filtraciones",url:"/servicios/reparacion-de-goteras-y-filtraciones/"}
+    ],ctaTitle:"¿Tu impermeabilizante tiene burbujas o se está despegando?",ctaText:"Envíanos fotos generales y cercanas, tu municipio y la antigüedad aproximada del trabajo. Te damos una valoración visual inicial gratuita antes de que vuelvas a impermeabilizar.",ctaMessage:"Hola Techofix, mi impermeabilizante se está despegando y quiero una valoración gratuita"
+  },
   "por-que-sigue-goteando-despues-de-impermeabilizar":{
     slug:"por-que-sigue-goteando-despues-de-impermeabilizar",title:"¿Por qué sigue goteando un techo después de impermeabilizar?",excerpt:"La filtración puede venir de una grieta, una junta, una tubería o una pendiente incorrecta. Estas son las causas que conviene revisar.",category:"Goteras y filtraciones",readTime:"6 min",date:"19 agosto 2026",intro:"Impermeabilizar no siempre resuelve una gotera. El agua puede entrar por un punto, recorrer la losa o la cubierta y aparecer metros más adelante dentro del inmueble. Por eso, antes de aplicar otra capa, conviene encontrar la ruta real de la filtración.",
     sections:[{heading:"El punto donde aparece el agua no siempre es el origen",paragraphs:["Una mancha en el plafón muestra dónde terminó el recorrido del agua, no necesariamente dónde comenzó. En losas, la humedad puede avanzar por fisuras; en cubiertas metálicas, puede seguir traslapes o elementos estructurales."]},{heading:"Causas frecuentes de una filtración persistente",paragraphs:["Cuando una impermeabilización reciente no funciona, la revisión debe incluir todo lo que interrumpe o conecta la superficie del techo."],bullets:["Grietas que no fueron abiertas, limpiadas y resanadas correctamente.","Juntas constructivas o uniones con movimiento.","Sellos deteriorados alrededor de tuberías, domos o bases.","Encharcamientos provocados por una pendiente insuficiente.","Canalones o bajadas pluviales obstruidos o con fugas.","Traslapes y tornillería en techos de lámina."]},{heading:"Qué hacer antes de volver a impermeabilizar",paragraphs:["La solución empieza con una inspección en seco y, cuando las condiciones lo permiten, una prueba controlada por zonas. Después se corrigen fisuras, uniones, pendientes o piezas dañadas y solamente entonces se restablece el sistema impermeable.","Aplicar producto adicional sin corregir el origen puede ocultar temporalmente el problema y dificultar la siguiente reparación."]}],

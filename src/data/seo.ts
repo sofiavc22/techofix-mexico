@@ -30,7 +30,7 @@ export const businessSchema = {
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/favicon.svg`,
   image: `${SITE_URL}/og.webp`,
-  telephone: '+52 55 9106 9566',
+  telephone: '+52 672 267 1419',
   description:
     'Reparación, instalación, mantenimiento e impermeabilización de techos residenciales e industriales en el Estado de México.',
   priceRange: '$$',
@@ -44,7 +44,7 @@ export const businessSchema = {
   }],
   contactPoint: [{
     '@type': 'ContactPoint',
-    telephone: '+52 55 9106 9566',
+    telephone: '+52 672 267 1419',
     contactType: 'customer service',
     availableLanguage: ['Spanish'],
     areaServed: 'MX',

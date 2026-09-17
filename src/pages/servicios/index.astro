@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { services } from '../../data/site-data';
-const wa='https://wa.me/525591069566?text=Hola%20Techofix%2C%20quiero%20una%20cotizaci%C3%B3n%20gratuita';
+const wa='https://wa.me/526722671419?text=Hola%20Techofix%2C%20quiero%20una%20cotizaci%C3%B3n%20gratuita';
 const serviceList=Object.values(services);
 ---
 <BaseLayout title="Servicios de reparación e impermeabilización | Techofix" description="Reparación, impermeabilización, mantenimiento e instalación de techos residenciales e industriales en el Estado de México.">
@@ -11,7 +11,7 @@ const serviceList=Object.values(services);
   <main>
     <section class="pageHero"><p class="eyebrow"><span></span>Servicios para hogares e industria</p><h1>Protegemos lo que está debajo.</h1><p>Diagnosticamos el origen del daño y recomendamos una solución acorde con el material, el uso y el estado real de cada techo.</p><a class="button" href={wa}>Solicitar cotización ↗</a></section>
     <section class="section catalogSection"><div class="sectionHead darkText"><div><p class="sectionTag">Especialidades Techofix</p><h2>Una solución para cada cubierta.</h2></div><p>Selecciona un servicio para conocer problemas frecuentes, nuestro proceso de trabajo y respuestas a las preguntas más comunes.</p></div><div class="catalogGrid">{serviceList.map((service,index)=><a class="catalogCard" href={`/servicios/${service.slug}/`}><span>{String(index+1).padStart(2,'0')}</span><h2>{service.title}</h2><p>{service.description}</p><b>Ver servicio ↗</b></a>)}</div></section>
-    <section class="cta"><p class="sectionTag light">¿No sabes qué necesita tu techo?</p><h2>Lo revisamos y te explicamos la solución.</h2><div><a class="button buttonWhite" href={wa}>Cotización gratuita ↗</a><a class="phone" href="tel:+525591069566">55 9106 9566</a></div></section>
+    <section class="cta"><p class="sectionTag light">¿No sabes qué necesita tu techo?</p><h2>Lo revisamos y te explicamos la solución.</h2><div><a class="button buttonWhite" href={wa}>Cotización gratuita ↗</a><a class="phone" href="tel:+526722671419">672 267 1419</a></div></section>
   </main>
   <Footer />
 </BaseLayout>
